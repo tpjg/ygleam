@@ -69,8 +69,8 @@ export function onStackCleared(yUndoManager, cb) {
 
 // YMultiDocUndoManager functions
 
-export function multi_doc_new(docs) {
-  return new YMultiDocUndoManager(docs.toArray());
+export function multi_doc_new(scope) {
+  return new YMultiDocUndoManager(scope.toArray());
 }
 
 export function multi_doc_undo(yMultiDocUndoManager) {
@@ -87,18 +87,6 @@ export function multi_doc_clear(yMultiDocUndoManager) {
 
 export function multi_doc_stop_capturing(yMultiDocUndoManager) {
   return yMultiDocUndoManager.stopCapturing();
-}
-
-export function multi_doc_add_doc(yMultiDocUndoManager, doc) {
-  return yMultiDocUndoManager.addDoc(doc);
-}
-
-export function multi_doc_remove_doc(yMultiDocUndoManager, doc) {
-  return yMultiDocUndoManager.removeDoc(doc);
-}
-
-export function multi_doc_add_scope(yMultiDocUndoManager, scope) {
-  return yMultiDocUndoManager.addScope(scope.toArray());
 }
 
 export function multi_doc_add_to_scope(yMultiDocUndoManager, scope) {

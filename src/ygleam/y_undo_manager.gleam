@@ -53,7 +53,7 @@ pub fn stop_capturing(undo_manager: YUndoManager) -> Nil
 // YMultiDocUndoManager functions
 
 @external(javascript, "../yUndoManager.mjs", "multi_doc_new")
-pub fn multi_doc_new(docs: List(y.Doc)) -> YMultiDocUndoManager
+pub fn multi_doc_new(scope: List(y.Value)) -> YMultiDocUndoManager
 
 @external(javascript, "../yUndoManager.mjs", "multi_doc_undo")
 pub fn multi_doc_undo(undo_manager: YMultiDocUndoManager) -> Nil
@@ -66,18 +66,6 @@ pub fn multi_doc_clear(undo_manager: YMultiDocUndoManager) -> Nil
 
 @external(javascript, "../yUndoManager.mjs", "multi_doc_stop_capturing")
 pub fn multi_doc_stop_capturing(undo_manager: YMultiDocUndoManager) -> Nil
-
-@external(javascript, "../yUndoManager.mjs", "multi_doc_add_doc")
-pub fn multi_doc_add_doc(undo_manager: YMultiDocUndoManager, doc: y.Doc) -> Nil
-
-@external(javascript, "../yUndoManager.mjs", "multi_doc_remove_doc")
-pub fn multi_doc_remove_doc(undo_manager: YMultiDocUndoManager, doc: y.Doc) -> Nil
-
-@external(javascript, "../yUndoManager.mjs", "multi_doc_add_scope")
-pub fn multi_doc_add_scope(
-  undo_manager: YMultiDocUndoManager,
-  scope: List(y.Value),
-) -> Nil
 
 @external(javascript, "../yUndoManager.mjs", "multi_doc_add_to_scope")
 pub fn multi_doc_add_to_scope(

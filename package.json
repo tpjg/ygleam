@@ -11,6 +11,7 @@
   "dependencies": {
     "lint-staged": "^16.1.4",
     "y-protocols": "1.0.6",
+    "y-utility": "^0.1.4",
     "yjs": "13.6.27"
   },
   "devDependencies": {

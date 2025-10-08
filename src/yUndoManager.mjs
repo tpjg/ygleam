@@ -1,6 +1,9 @@
 import * as Y from "yjs";
+import { YMultiDocUndoManager } from "y-utility/y-multidoc-undo-manager";
 
 import * as YGleamUndoManager from "./ygleam/y_undo_manager.mjs";
+
+// YUndoManager functions
 
 export function do_new(scope) {
   return new Y.UndoManager(scope.toArray());
@@ -62,4 +65,42 @@ export function onStackCleared(yUndoManager, cb) {
 
     return cb(undoStackCleared, redoStackCleared);
   });
+}
+
+// YMultiDocUndoManager functions
+
+export function multi_doc_new(docs) {
+  return new YMultiDocUndoManager(docs.toArray());
+}
+
+export function multi_doc_undo(yMultiDocUndoManager) {
+  return yMultiDocUndoManager.undo();
+}
+
+export function multi_doc_redo(yMultiDocUndoManager) {
+  return yMultiDocUndoManager.redo();
+}
+
+export function multi_doc_clear(yMultiDocUndoManager) {
+  return yMultiDocUndoManager.clear();
+}
+
+export function multi_doc_stop_capturing(yMultiDocUndoManager) {
+  return yMultiDocUndoManager.stopCapturing();
+}
+
+export function multi_doc_add_doc(yMultiDocUndoManager, doc) {
+  return yMultiDocUndoManager.addDoc(doc);
+}
+
+export function multi_doc_remove_doc(yMultiDocUndoManager, doc) {
+  return yMultiDocUndoManager.removeDoc(doc);
+}
+
+export function multi_doc_add_scope(yMultiDocUndoManager, scope) {
+  return yMultiDocUndoManager.addScope(scope.toArray());
+}
+
+export function multi_doc_add_to_scope(yMultiDocUndoManager, scope) {
+  return yMultiDocUndoManager.addToScope(scope);
 }

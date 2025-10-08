@@ -1,35 +1,40 @@
 import ygleam/y
+import ygleam/y_doc
 
 // pub type DeleteItem
-// 
+//
 // @external(javascript, "../yUndoManager.mjs", "deleteItemClock")
 // pub fn delete_item_clock(delete_set: DeleteSet) -> Float
-// 
+//
 // @external(javascript, "../yUndoManager.mjs", "deleteItemLen")
 // pub fn delete_item_len(delete_set: DeleteSet) -> Float
-// 
+//
 // pub type DeleteSet
-// 
+//
 // @external(javascript, "../yUndoManager.mjs", "deleteSetClients")
 // pub fn delete_set_clients(delete_set: DeleteSet) -> Dict(Int, List(DeleteItem))
-// 
+//
 // pub type StackItem
-// 
+//
 // @external(javascript, "../yUndoManager.mjs", "stackItemInsertions")
 // pub fn stack_item_insertions(stack_item: StackItem) -> Option(DeleteSet)
-// 
+//
 // @external(javascript, "../yUndoManager.mjs", "stackItemDeletions")
 // pub fn stack_item_deletions(stack_item: StackItem) -> Option(DeleteSet)
-// 
+//
 // @external(javascript, "../yUndoManager.mjs", "stackItemMeta")
-// pub fn stack_item_meta(stack_item: StackItem) -> 
+// pub fn stack_item_meta(stack_item: StackItem) ->
 
 pub type YUndoManager
+
+pub type YMultiDocUndoManager
 
 pub type UndoType {
   Undo
   Redo
 }
+
+// YUndoManager functions
 
 @external(javascript, "../yUndoManager.mjs", "do_new")
 pub fn new(scope: List(y.Value)) -> YUndoManager
@@ -45,6 +50,47 @@ pub fn clear(undo_manager: YUndoManager) -> Nil
 
 @external(javascript, "../yUndoManager.mjs", "stopCapturing")
 pub fn stop_capturing(undo_manager: YUndoManager) -> Nil
+
+// YMultiDocUndoManager functions
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_new")
+pub fn multi_doc_new(docs: List(y_doc.YDoc)) -> YMultiDocUndoManager
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_undo")
+pub fn multi_doc_undo(undo_manager: YMultiDocUndoManager) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_redo")
+pub fn multi_doc_redo(undo_manager: YMultiDocUndoManager) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_clear")
+pub fn multi_doc_clear(undo_manager: YMultiDocUndoManager) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_stop_capturing")
+pub fn multi_doc_stop_capturing(undo_manager: YMultiDocUndoManager) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_add_doc")
+pub fn multi_doc_add_doc(
+  undo_manager: YMultiDocUndoManager,
+  doc: y_doc.YDoc,
+) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_remove_doc")
+pub fn multi_doc_remove_doc(
+  undo_manager: YMultiDocUndoManager,
+  doc: y_doc.YDoc,
+) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_add_scope")
+pub fn multi_doc_add_scope(
+  undo_manager: YMultiDocUndoManager,
+  scope: List(y.Value),
+) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_add_to_scope")
+pub fn multi_doc_add_to_scope(
+  undo_manager: YMultiDocUndoManager,
+  scope: y.Value,
+) -> Nil
 // 
 // @external(javascript, "../yUndoManager.mjs", "onStackItemAdded")
 // pub fn on_stack_item_added(

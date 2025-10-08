@@ -1,4 +1,5 @@
 import gleam/dict
+import gleam/dynamic
 import gleam/json
 import gleam/list
 import gleam/option.{type Option, None, Some}
@@ -29,6 +30,9 @@ pub type XmlElement
 ///   - Object<String, Value>
 ///   - Any Yjs type
 pub type Value
+
+@external(javascript, "../utils.mjs", "identity")
+pub fn as_dynamic(a: any) -> dynamic.Dynamic
 
 @external(javascript, "../utils.mjs", "identity")
 fn do_coerce(a: any) -> Value

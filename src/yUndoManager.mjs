@@ -1,5 +1,5 @@
 import * as Y from "yjs";
-import { YMultiDocUndoManager } from "y-utility/y-multidoc-undo-manager";
+import { YMultiDocUndoManager } from "y-utility/y-multidoc-undomanager";
 
 import * as YGleamUndoManager from "./ygleam/y_undo_manager.mjs";
 

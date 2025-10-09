@@ -72,6 +72,18 @@ pub fn multi_doc_add_to_scope(
   undo_manager: YMultiDocUndoManager,
   scope: y.Value,
 ) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_add_tracked_origin")
+pub fn multi_doc_add_tracked_origin(
+  undo_manager: YMultiDocUndoManager,
+  origin: a,
+) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_remove_tracked_origin")
+pub fn multi_doc_remove_tracked_origin(
+  undo_manager: YMultiDocUndoManager,
+  origin: a,
+) -> Nil
 // 
 // @external(javascript, "../yUndoManager.mjs", "onStackItemAdded")
 // pub fn on_stack_item_added(

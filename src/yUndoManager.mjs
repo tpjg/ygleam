@@ -92,3 +92,11 @@ export function multi_doc_stop_capturing(yMultiDocUndoManager) {
 export function multi_doc_add_to_scope(yMultiDocUndoManager, scope) {
   return yMultiDocUndoManager.addToScope(scope);
 }
+
+export function multi_doc_add_tracked_origin(yMultiDocUndoManager, origin) {
+  return yMultiDocUndoManager.addTrackedOrigin(origin);
+}
+
+export function multi_doc_remove_tracked_origin(yMultiDocUndoManager, origin) {
+  return yMultiDocUndoManager.removeTrackedOrigin(origin);
+}

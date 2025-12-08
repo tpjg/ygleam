@@ -71,7 +71,8 @@ export function forEach(yMap, cb) {
 }
 
 export function entries(yMap) {
-  return toGleamYielder(yMap.entries(), (key, yValue) => [key, yValue]);
+  // yMap.entries() yields [key, value] arrays, so destructure the single argument
+  return toGleamYielder(yMap.entries(), ([key, yValue]) => [key, yValue]);
 }
 
 export function values(yMap) {

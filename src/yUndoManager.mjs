@@ -100,3 +100,11 @@ export function multi_doc_add_tracked_origin(yMultiDocUndoManager, origin) {
 export function multi_doc_remove_tracked_origin(yMultiDocUndoManager, origin) {
   return yMultiDocUndoManager.removeTrackedOrigin(origin);
 }
+
+export function multi_doc_can_undo(yMultiDocUndoManager) {
+  return yMultiDocUndoManager.canUndo();
+}
+
+export function multi_doc_can_redo(yMultiDocUndoManager) {
+  return yMultiDocUndoManager.canRedo();
+}

@@ -84,6 +84,12 @@ pub fn multi_doc_remove_tracked_origin(
   undo_manager: YMultiDocUndoManager,
   origin: a,
 ) -> Nil
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_can_undo")
+pub fn multi_doc_can_undo(undo_manager: YMultiDocUndoManager) -> Bool
+
+@external(javascript, "../yUndoManager.mjs", "multi_doc_can_redo")
+pub fn multi_doc_can_redo(undo_manager: YMultiDocUndoManager) -> Bool
 // 
 // @external(javascript, "../yUndoManager.mjs", "onStackItemAdded")
 // pub fn on_stack_item_added(

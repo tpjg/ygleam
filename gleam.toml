@@ -1,5 +1,5 @@
 name = "ygleam"
-version = "0.8.2"
+version = "0.8.3"
 licences = ["Apache-2.0"]
 description = "Yjs Gleam Bindings"
 
@@ -17,7 +17,7 @@ links = [
 typescript_declarations = true
 
 [dependencies]
-gleam_stdlib = ">= 0.60.0 and < 2.0.0"
+gleam_stdlib = ">= 0.68.0 and < 2.0.0"
 gleam_json = ">= 1.0.0 and < 4.0.0"
 gleam_yielder = ">= 1.1.0 and < 2.0.0"
 

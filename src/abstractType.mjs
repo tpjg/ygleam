@@ -1,7 +1,7 @@
 import * as Y from "yjs";
 
 import { List } from "./gleam.mjs";
-import Dict from "../gleam_stdlib/dict.mjs";
+import { from as dictFrom } from "../gleam_stdlib/dict.mjs";
 import { None, Some } from "../gleam_stdlib/gleam/option.mjs";
 
 import * as YGleamEvent from "./ygleam/y_event.mjs";
@@ -22,25 +22,25 @@ export function parent(yAbstractType) {
 }
 
 function changesKeys(yEvent) {
-  return Dict.fromObject(
-    Object.fromEntries(
-      [...yEvent.changes.keys.entries()].map(([key, { action, oldValue }]) => {
-        let typedAction;
-        const typedOldValue = oldValue ? new Some(oldValue) : new None();
+  // Convert Y.js event changes.keys to a Gleam Dict
+  // dictFrom() takes an iterable of [key, value] pairs
+  return dictFrom(
+    [...yEvent.changes.keys.entries()].map(([key, { action, oldValue }]) => {
+      let typedAction;
+      const typedOldValue = oldValue ? new Some(oldValue) : new None();
 
-        if (action === "add") {
-          typedAction = new YGleamEvent.AddAction(typedOldValue);
-        } else if (action === "update") {
-          typedAction = new YGleamEvent.UpdateAction(typedOldValue);
-        } else if (action === "delete") {
-          typedAction = new YGleamEvent.DeleteAction(typedOldValue);
-        } else {
-          typedAction = new YGleamEvent.UnknownAction(typedOldValue);
-        }
+      if (action === "add") {
+        typedAction = new YGleamEvent.AddAction(typedOldValue);
+      } else if (action === "update") {
+        typedAction = new YGleamEvent.UpdateAction(typedOldValue);
+      } else if (action === "delete") {
+        typedAction = new YGleamEvent.DeleteAction(typedOldValue);
+      } else {
+        typedAction = new YGleamEvent.UnknownAction(typedOldValue);
+      }
 
-        return [key, typedAction];
-      }),
-    ),
+      return [key, typedAction];
+    }),
   );
 }
 

@@ -15,7 +15,7 @@ export function transaction(anyEvent) {
 }
 
 export function path(anyEvent) {
-  List.fromArray(
+  return List.fromArray(
     anyEvent.event.path.map((section) =>
       typeof section === "number"
         ? new NumberSection(section)
